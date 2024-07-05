@@ -16,9 +16,9 @@
 
 ## Технологии
 
-- Python 3.12;
+- Python;
 - Django (Django REST framework, Celery);
-- PostgresQL (БД для хранения данных);
+- PostgreSQL (БД для хранения данных);
 - Docker.
 
 ## Запуск проекта
@@ -82,6 +82,8 @@
     - DELETE: http://localhost:8000/lesson/delete/<pk урока>.
 8. Регистрация нового пользователя: 
    - POST: http://localhost:8000/users/user/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: email, password).
+9. После регистрации пользователя нужно войти в приложение с помощью логина и пароля сделав соответствующий запрос:
+   - POST: http://localhost:8000/users/login/
 
 ## Документация API
 
