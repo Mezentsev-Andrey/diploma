@@ -6,7 +6,7 @@ NULLABLE = {"blank": True, "null": True}
 
 
 class Module(models.Model):
-    """ Модель образовательного модуля """
+    """Модель образовательного модуля"""
 
     title = models.CharField(max_length=200, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
@@ -28,9 +28,15 @@ class Module(models.Model):
 
 
 class Course(models.Model):
-    """ Модель учебного курса """
+    """Модель учебного курса"""
 
-    module = models.ForeignKey(Module, related_name="module", verbose_name="Модуль", on_delete=models.CASCADE)
+    module = models.ForeignKey(
+        Module,
+        related_name="module",
+        on_delete=models.CASCADE,
+        **NULLABLE,
+        verbose_name="Модуль",
+    )
     title = models.CharField(max_length=200, verbose_name="Название")
     preview = models.ImageField(
         upload_to="course_preview", verbose_name="Изображение", **NULLABLE
@@ -53,14 +59,14 @@ class Course(models.Model):
 
 
 class Lesson(models.Model):
-    """ Модель урока """
+    """Модель урока"""
 
     course = models.ForeignKey(
         Course,
         related_name="course",
-        verbose_name="Курс",
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         **NULLABLE,
+        verbose_name="Курс",
     )
     title = models.CharField(max_length=255, verbose_name="Название")
     description = models.TextField(verbose_name="Описание")
@@ -84,11 +90,11 @@ class Lesson(models.Model):
 
 
 class Subscription(models.Model):
-    """ Модель подписки на образовательный модуль или курс """
+    """Модель подписки на образовательный модуль или курс"""
 
     SUBSCRIPTION_TYPE_CHOICES = [
-        ('module', 'Модуль'),
-        ('course', 'Курс'),
+        ("module", "Модуль"),
+        ("course", "Курс"),
     ]
 
     subscriber = models.ForeignKey(
@@ -101,7 +107,7 @@ class Subscription(models.Model):
     subscription_type = models.CharField(
         max_length=10,
         choices=SUBSCRIPTION_TYPE_CHOICES,
-        default="module",
+        default="course",
         verbose_name="Тип подписки",
     )
 

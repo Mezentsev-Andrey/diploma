@@ -1,14 +1,28 @@
 from django.urls import path
 
 from modules.apps import ModulesConfig
-from modules.views import (LessonCreateAPIView, LessonDestroyAPIView,
-                           LessonListAPIView, LessonRetrieveAPIView,
-                           LessonUpdateAPIView, ModuleCreateAPIView,
-                           ModuleDestroyAPIView, ModuleListAPIView,
-                           ModuleRetrieveAPIView, ModuleUpdateAPIView,
-                           SubscriptionListCreateView,
-                           SubscriptionDetailView, CourseListAPIView, CourseCreateAPIView, CourseUpdateAPIView,
-                           CourseDestroyAPIView, CourseRetrieveAPIView)
+from modules.views import (
+    CourseCreateAPIView,
+    CourseDestroyAPIView,
+    CourseListAPIView,
+    CourseRetrieveAPIView,
+    CourseUpdateAPIView,
+    LessonCreateAPIView,
+    LessonDestroyAPIView,
+    LessonListAPIView,
+    LessonRetrieveAPIView,
+    LessonUpdateAPIView,
+    ModuleCreateAPIView,
+    ModuleDestroyAPIView,
+    ModuleListAPIView,
+    ModuleRetrieveAPIView,
+    ModuleUpdateAPIView,
+    SubscriptionCreateAPIView,
+    SubscriptionDestroyAPIView,
+    SubscriptionListAPIView,
+    SubscriptionRetrieveAPIView,
+    SubscriptionUpdateAPIView,
+)
 
 app_name = ModulesConfig.name
 
@@ -23,7 +37,6 @@ urlpatterns = [
         "modules/delete/<int:pk>/", ModuleDestroyAPIView.as_view(), name="module_delete"
     ),
     path("course/", CourseListAPIView.as_view(), name="course_list"),
-
     path("course/create/", CourseCreateAPIView.as_view(), name="course_create"),
     path("course/update/<int:pk>", CourseUpdateAPIView.as_view(), name="course_update"),
     path(
@@ -32,8 +45,8 @@ urlpatterns = [
         name="course_retrieve",
     ),
     path(
-        "course/delete/<int:pk>", CourseDestroyAPIView.as_view(), name="course_delete"),
-
+        "course/delete/<int:pk>", CourseDestroyAPIView.as_view(), name="course_delete"
+    ),
     path("lesson/", LessonListAPIView.as_view(), name="lesson_list"),
     path("lesson/create/", LessonCreateAPIView.as_view(), name="lesson_create"),
     path("lesson/update/<int:pk>", LessonUpdateAPIView.as_view(), name="lesson_update"),
@@ -45,6 +58,25 @@ urlpatterns = [
     path(
         "lesson/delete/<int:pk>", LessonDestroyAPIView.as_view(), name="lesson_delete"
     ),
-    path('subscriptions/', SubscriptionListCreateView.as_view(), name='subscription_list_create'),
-    path('subscriptions/<int:pk>/', SubscriptionDetailView.as_view(), name='subscription_detail'),
+    path("subscription/", SubscriptionListAPIView.as_view(), name="subscription_list"),
+    path(
+        "subscription/create",
+        SubscriptionCreateAPIView.as_view(),
+        name="subscription_create",
+    ),
+    path(
+        "subscription/update/<int:pk>",
+        SubscriptionUpdateAPIView.as_view(),
+        name="subscription_update",
+    ),
+    path(
+        "subscription/retrieve/<int:pk>",
+        SubscriptionRetrieveAPIView.as_view(),
+        name="subscription_retrieve",
+    ),
+    path(
+        "subscription/delete/<int:pk>",
+        SubscriptionDestroyAPIView.as_view(),
+        name="subscription_delete",
+    ),
 ]

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from modules.models import Lesson, Module, Subscription, Course
+from modules.models import Course, Lesson, Module, Subscription
 from modules.validators import ValidateURLResource
 
 

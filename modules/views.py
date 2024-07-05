@@ -1,13 +1,17 @@
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 
-from modules.models import Lesson, Module, Subscription, Course
+from modules.models import Course, Lesson, Module, Subscription
 from modules.paginations import CustomPagination
-from modules.serializers import (LessonSerializer, ModuleSerializer,
-                                 SubscriptionSerializer, CourseSerializer)
+from modules.serializers import (
+    CourseSerializer,
+    LessonSerializer,
+    ModuleSerializer,
+    SubscriptionSerializer,
+)
 from users.permissions import IsModerator, IsOwner
 
 
@@ -24,7 +28,7 @@ class ModuleListAPIView(generics.ListAPIView):
     serializer_class = ModuleSerializer
     queryset = Module.objects.all()
     pagination_class = CustomPagination
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 
 class ModuleRetrieveAPIView(generics.RetrieveAPIView):
@@ -32,6 +36,7 @@ class ModuleRetrieveAPIView(generics.RetrieveAPIView):
 
     serializer_class = ModuleSerializer
     queryset = Module.objects.all()
+    permission_classes = [AllowAny]
 
 
 class ModuleUpdateAPIView(generics.UpdateAPIView):
@@ -50,21 +55,24 @@ class ModuleDestroyAPIView(generics.DestroyAPIView):
 
 
 class CourseListAPIView(generics.ListAPIView):
-    """ Контроллер для списка курсов."""
+    """Контроллер для списка курсов."""
+
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    permission_classes = [AllowAny]
 
 
 class CourseRetrieveAPIView(generics.RetrieveAPIView):
     """Контроллер для просмотра урока курса."""
 
     queryset = Course.objects.all()
-    serializer_class = LessonSerializer
-    permission_classes = (IsAuthenticated, IsModerator | IsOwner)
+    serializer_class = CourseSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsOwner, IsAdminUser]
 
 
 class CourseDetailAPIView(generics.RetrieveAPIView):
-    """ Контроллер для детального просмотра курса образовательного модуля."""
+    """Контроллер для детального просмотра курса образовательного модуля."""
+
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     permission_classes = IsAuthenticated
@@ -75,7 +83,7 @@ class CourseCreateAPIView(generics.CreateAPIView):
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = (~IsModerator, IsAuthenticated)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
 
 class CourseUpdateAPIView(generics.UpdateAPIView):
@@ -83,7 +91,7 @@ class CourseUpdateAPIView(generics.UpdateAPIView):
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    # permission_classes = (IsAuthenticated, IsModerator | IsOwner)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
 
 class CourseDestroyAPIView(generics.DestroyAPIView):
@@ -91,7 +99,7 @@ class CourseDestroyAPIView(generics.DestroyAPIView):
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    # permission_classes = (IsOwner | ~IsModerator)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
@@ -99,7 +107,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = (~IsModerator, IsOwner)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
     def perform_create(self, serializer):
         lesson = serializer.save()
@@ -113,6 +121,7 @@ class LessonListAPIView(generics.ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
     pagination_class = CustomPagination
+    permission_classes = [AllowAny]
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
@@ -120,7 +129,7 @@ class LessonRetrieveAPIView(generics.RetrieveAPIView):
 
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = (IsAuthenticated, IsModerator | IsOwner)
+    permission_classes = [IsAuthenticated, IsModerator | IsOwner, IsAdminUser]
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
@@ -128,7 +137,7 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = (IsModerator | IsOwner)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):
@@ -136,13 +145,23 @@ class LessonDestroyAPIView(generics.DestroyAPIView):
 
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
-    permission_classes = (IsOwner | ~IsModerator)
+    permission_classes = [IsModerator | IsOwner, IsAdminUser]
 
 
-class SubscriptionListCreateView(generics.ListCreateAPIView):
-    """Контроллер для создания подписок и их списков."""
+class SubscriptionListAPIView(generics.ListAPIView):
+    """Контроллер для вывода списка подписок."""
+
+    queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-    permission_classes = [IsAuthenticated]
+    pagination_class = CustomPagination
+    permission_classes = [AllowAny]
+
+
+class SubscriptionCreateAPIView(generics.ListCreateAPIView):
+    """Контроллер для создания подписки."""
+
+    serializer_class = SubscriptionSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
 
     def get_queryset(self):
         # Возвращает подписки текущего пользователя
@@ -150,9 +169,13 @@ class SubscriptionListCreateView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         # Устанавливаем текущего пользователя как подписчика
-        if serializer.validated_data['subscription_type'] == 'module' and not serializer.validated_data.get('module'):
+        if serializer.validated_data[
+            "subscription_type"
+        ] == "module" and not serializer.validated_data.get("module"):
             raise ValidationError("Для подписки на модуль необходимо указать модуль.")
-        if serializer.validated_data['subscription_type'] == 'course' and not serializer.validated_data.get('course'):
+        if serializer.validated_data[
+            "subscription_type"
+        ] == "course" and not serializer.validated_data.get("course"):
             raise ValidationError("Для подписки на курс необходимо указать курс.")
 
         serializer.save(subscriber=self.request.user)
@@ -164,19 +187,12 @@ class SubscriptionListCreateView(generics.ListCreateAPIView):
         # Получаем модуль
         module_item = get_object_or_404(Module, pk=module_id)
 
-        # Получаем все курсы, связанные с этим модулем
-        related_courses = Course.objects.filter(modules=module_item)
-
-        # Проверяем наличие подписок на модуль
-        subs_module = Subscription.objects.filter(subscriber=user, module=module_item)
-
-        # Проверяем наличие подписок на все курсы, связанные с этим модулем
-        subs_courses = Subscription.objects.filter(subscriber=user, course__in=related_courses)
-
-        # Инициализируем сообщения
+        # Инициализируем сообщение
         message = {}
 
         # Управление подпиской на модуль
+        subs_module = Subscription.objects.filter(subscriber=user, module=module_item)
+
         if subs_module.exists():
             subs_module.delete()
             message["module"] = "Подписка на модуль удалена"
@@ -184,31 +200,58 @@ class SubscriptionListCreateView(generics.ListCreateAPIView):
             Subscription.objects.create(subscriber=user, module=module_item)
             message["module"] = "Подписка на модуль добавлена"
 
-        # Управление подписками на курсы
-        if subs_courses.exists():
-            subs_courses.delete()
-            message["course"] = "Подписки на связанные курсы удалены"
-        else:
-            for course in related_courses:
-                Subscription.objects.create(subscriber=user, course=course)
-            message["course"] = "Подписки на связанные курсы добавлены"
+        # Проверяем наличие связанного курса и управление подпиской на курс
+        if getattr(module_item, "course", None):
+            course_item = module_item.course
+
+            subs_course = Subscription.objects.filter(
+                subscriber=user, course=course_item
+            )
+
+            if subs_course.exists():
+                subs_course.delete()
+                message["course"] = "Подписка на курс удалена"
+            else:
+                Subscription.objects.create(subscriber=user, course=course_item)
+                message["course"] = "Подписка на курс добавлена"
 
         # Возвращаем ответ в API
         return Response({"message": message})
 
 
-class SubscriptionDetailView(generics.RetrieveUpdateDestroyAPIView):
-    """    Контроллер  для просмотра, обновления и удаления подписки."""
+class SubscriptionUpdateAPIView(generics.UpdateAPIView):
+    """Контроллер для обновления подписки."""
+
     serializer_class = SubscriptionSerializer
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
 
     def get_queryset(self):
         # Возвращает подписки текущего пользователя
         return Subscription.objects.filter(subscriber=self.request.user)
 
     def perform_update(self, serializer):
-        if serializer.validated_data['subscription_type'] == 'module' and not serializer.validated_data.get('module'):
+        if serializer.validated_data[
+            "subscription_type"
+        ] == "module" and not serializer.validated_data.get("module"):
             raise ValidationError("Для подписки на модуль необходимо указать модуль.")
-        if serializer.validated_data['subscription_type'] == 'course' and not serializer.validated_data.get('course'):
+        if serializer.validated_data[
+            "subscription_type"
+        ] == "course" and not serializer.validated_data.get("course"):
             raise ValidationError("Для подписки на курс необходимо указать курс.")
         serializer.save()
+
+
+class SubscriptionRetrieveAPIView(generics.RetrieveAPIView):
+    """Контроллер для просмотра подписки."""
+
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
+
+
+class SubscriptionDestroyAPIView(generics.DestroyAPIView):
+    """Контроллер для удаления подписки."""
+
+    queryset = Subscription.objects.all()
+    serializer_class = SubscriptionSerializer
+    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
