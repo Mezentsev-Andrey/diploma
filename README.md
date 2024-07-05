@@ -85,7 +85,7 @@
 
 ## Документация API
 
-Документация API доступна после запуска сервера по адресам: `http://localhost:8000/redoc/` и `http://localhost:8000/swagger/`
+Документация API доступна после запуска сервера по адресам: http://localhost:8000/redoc/ и http://localhost:8000/swagger/
 
 ## Запуск проекта с использованием Docker
   - Используйте файлы Dockerfile и docker-compose.yml. При необходимости внесите в них требуемые изменения;
