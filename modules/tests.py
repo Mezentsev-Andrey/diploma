@@ -502,6 +502,23 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
         # URL для обновления подписки
         self.url = reverse("modules:subscription_update", args=[self.subscription.id])
 
+    def test_update_subscription(self):
+        # Подготавливаем данные для обновления
+        data = {
+            'subscription_type': 'course',
+            'course': self.course.id  # Используем реальный ID курса
+        }
+
+        response = self.client.put(self.url, data, format='json')
+
+        # Проверка статуса ответа
+        self.assertEqual(response.status_code, status.HTTP_200_OK, msg=response.data)
+
+        # Проверяем, что подписка была обновлена
+        self.subscription.refresh_from_db()
+        self.assertEqual(self.subscription.subscription_type, 'course')
+        self.assertEqual(self.subscription.course.id, self.course.id)
+
     def test_update_subscription_success(self):
         """Тест успешного обновления подписки."""
 
@@ -576,6 +593,39 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
             "Для подписки на модуль необходимо указать модуль.", str(error_message)
         )
 
+    def test_invalid_subscription_update(self):
+        """Тест попытку обновления подписки на модуль без указания модуля."""
+
+        # Подготавливаем данные для обновления: тип подписки 'module' без указания модуля
+        data = {
+            'subscription_type': 'module',
+            # модуль не указан
+        }
+
+        # Отправляем PUT запрос на обновление подписки
+        response = self.client.put(self.url, data, format='json')
+
+        # Проверяем, что статус ответа 400 Bad Request, что указывает на ошибку в данных запроса
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST, msg=response.data)
+
+        # Проверяем, что ожидаемое сообщение об ошибке содержится в ответе API
+        # Предполагаем, что response.data может быть списком ошибок
+        expected_error_message = 'Для подписки на модуль необходимо указать модуль.'
+
+        # Проверяем, что ошибка присутствует в списке ошибок
+        errors = response.data
+        if isinstance(errors, dict):
+            # Если response.data является словарем, ищем ошибку в 'non_field_errors' или другом ключе
+            error_messages = errors.get('non_field_errors', [])
+        elif isinstance(errors, list):
+            # Если response.data является списком, используем его напрямую
+            error_messages = errors
+        else:
+            # Если структура данных неожиданная, выводим отладочное сообщение
+            error_messages = []
+
+        self.assertIn(expected_error_message, error_messages)
+
     def test_update_subscription_permissions(self):
         """Тест проверки прав доступа для обновления подписки."""
 
@@ -593,6 +643,32 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
         # Проверяем, что статус ответа 401 Unauthorized, что подтверждает отсутствие
         # прав доступа для неавторизованного пользователя.
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_update_subscription_not_admin(self):
+        """Тест проверки прав доступа для не-администратора"""
+
+        # Создаем нового пользователя с заданными атрибутами:
+        self.user = User.objects.create(
+            email="non_admin@test.ru",
+            password="1234",
+            is_superuser=False,
+            is_staff=False,
+        )
+        # Устанавливаем пароль пользователя.
+        self.user.set_password("1234")
+        self.user.save()
+        # Аутентифицируем тестового клиента под созданным пользователем.
+        self.client.force_authenticate(user=self.user)
+
+        # Создаем данные для обновления подписки.
+        data = {
+            'subscription_type': 'course',
+            'course': self.course.id,
+        }
+        # Выполняем PUT-запрос к URL обновления подписки с указанными данными в формате JSON.
+        response = self.client.put(self.url, data, format='json')
+        # Проверяем, что статус ответа равен 403 Forbidden (доступ запрещен).
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_retrieve_subscription(self):
         """Тест получения подписки."""
