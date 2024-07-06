@@ -697,7 +697,7 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
 
         # Генерируем URL для удаления подписки по её первичному ключу (ID).
         url = reverse(
-            "modules:subscription_delete", kwargs={"pk": self.subscription.pk}
+            "modules:subscription_delete", args=[self.subscription.id]
         )
 
         # Выполняем DELETE-запрос к сгенерированному URL для удаления подписки.
@@ -709,4 +709,25 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         # Проверяем, что подписка больше не существует в базе данных.
-        self.assertFalse(Subscription.objects.filter(pk=self.subscription.pk).exists())
+        self.assertFalse(Subscription.objects.filter(id=self.subscription.id).exists())
+
+    def test_unauthenticated_access(self):
+        """Тест для проверки доступа без аутентификации."""
+
+        url = reverse("modules:subscription_retrieve", args=[self.subscription.id])
+
+        # Деаутентифицируем пользователя
+        self.client.force_authenticate(user=None)
+        response = self.client.get(url)
+
+        # Проверка, что доступ запрещён (возвращается статус 404)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_retrieve_nonexistent_subscription(self):
+        """Тест для получения данных несуществующей подписки."""
+
+        url = reverse("modules:subscription_retrieve", kwargs={'pk': 99999})
+        response = self.client.get(url)
+
+        # Проверка, что доступ запрещён (возвращается статус 404)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
