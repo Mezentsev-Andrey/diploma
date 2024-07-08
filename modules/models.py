@@ -32,10 +32,10 @@ class Course(models.Model):
 
     module = models.ForeignKey(
         Module,
-        related_name="module",
+        related_name="course_set",
         on_delete=models.CASCADE,
-        **NULLABLE,
         verbose_name="Модуль",
+        **NULLABLE
     )
     title = models.CharField(max_length=200, verbose_name="Название")
     preview = models.ImageField(
@@ -63,7 +63,7 @@ class Lesson(models.Model):
 
     course = models.ForeignKey(
         Course,
-        related_name="course",
+        related_name="lesson_set",
         on_delete=models.CASCADE,
         **NULLABLE,
         verbose_name="Курс",
@@ -107,7 +107,7 @@ class Subscription(models.Model):
     subscription_type = models.CharField(
         max_length=10,
         choices=SUBSCRIPTION_TYPE_CHOICES,
-        default="course",
+        default="module",
         verbose_name="Тип подписки",
     )
 
