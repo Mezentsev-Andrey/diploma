@@ -25,32 +25,27 @@ class ModuleTestCase(APITestCase):
             owner=self.user,
         )
 
-    def test_retrieve_module(self):
-        """Тест на получение образовательного модуля."""
+    def retrieve_module(self):
+        """Тест на получение определенного образовательного модуля."""
 
-        # Создаем URL для эндпоинта получения модуля по его первичному ключу (pk).
-        url = reverse("modules:module_retrieve", args=(self.module.pk,))
-        # Выполняем GET-запрос к сформированному URL.
-        response = self.client.get(url)
+        # Отправляем GET-запрос на URL, соответствующий получению
+        # конкретного модуля с идентификатором self.module.id.
+        response = self.client.get(f'/modules/{self.module.id}/')
 
-        # Преобразуем тело ответа из формата JSON в Python-словарь.
-        data = response.json()
-
-        # Проверяем, что статус-код ответа равен 200 OK.
+        # Проверяем, что статус-код ответа равен 200 OK,
+        # что означает успешное получение ресурса.
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Проверяем, что значение ключа "title" в JSON-ответе совпадает с названием модуля.
-        self.assertEqual(data.get("title"), self.module.title)
+        # Проверяем, что значение поля title в данных ответа совпадает
+        # со значением поля title у модуля self.module.
+        self.assertEqual(response.data['title'], self.module.title)
 
     def test_create_module(self):
-        """Тест создания образовательного модуля."""
+        """Тест на создание нового образовательного модуля."""
 
-        # Создаем тестовый словарь данных, содержащий заголовок и описание нового модуля.
+        # Проверяем, что отправляем все необходимые поля для создания
         data = {"title": "New module", "description": "New module description"}
 
-        # Формируем URL для эндпоинта создания нового модуля.
-        url = reverse("modules:module_create")
-        # Выполняем POST-запрос к сформированному URL с данными о новом модуле.
-        response = self.client.post(url, data=data)
+        response = self.client.post('/modules/', data, format='json')
 
         # Проверяем, что статус-код ответа равен 201 Created.
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -60,10 +55,9 @@ class ModuleTestCase(APITestCase):
     def test_list_module(self):
         """Тест на получение списка образовательных модулей."""
 
-        # Формирует URL для эндпоинта получения списка всех образовательных модулей.
-        url = reverse("modules:module_list")
-        # Выполняет GET-запрос к сформированному URL.
-        response = self.client.get(url)
+        # Отправляем GET-запрос на URL, соответствующий получению списка модулей.
+        # self.client используется для выполнения запроса в контексте теста.
+        response = self.client.get('/modules/')
 
         # Проверяем, что статус-код ответа равен 200 OK.
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -71,16 +65,14 @@ class ModuleTestCase(APITestCase):
         self.assertEqual(Module.objects.all().count(), 1)
 
     def test_update_module(self):
-        """Тест изменения образовательного модуля."""
+        """Тест на обновление образовательного модуля."""
 
-        # Формируем URL для эндпоинта обновления существующего модуля по его первичному ключу (pk).
-        url = reverse("modules:module_update", args=(self.module.pk,))
-
-        # Создаем словарь новых данных для обновления модуля.
+        # Проверяем, что отправляем все необходимые поля для обновления
         new_data = {"description": "Test update module"}
 
-        # Выполняем PATCH-запрос к сформированному URL с новыми данными.
-        response = self.client.patch(url, data=new_data)
+        # Отправляем PATCH-запрос на URL, соответствующий обновлению модуля с определенным
+        # идентификатором self.module.id, с данными для обновления в формате JSON.
+        response = self.client.patch(f'/modules/{self.module.id}/', data=new_data, format='json')
 
         # Преобразуем тело ответа из формата JSON в Python-словарь.
         data = response.json()
@@ -93,10 +85,9 @@ class ModuleTestCase(APITestCase):
     def test_delete_module(self):
         """Тест удаления образовательного модуля."""
 
-        # Формируем URL для эндпоинта удаления существующего модуля по его первичному ключу (pk).
-        url = reverse("modules:module_delete", args=(self.module.pk,))
-        # Выполняем DELETE-запрос к сформированному URL.
-        response = self.client.delete(url)
+        # Отправляем DELETE-запрос на URL, соответствующий удалению модуля
+        # с определенным идентификатором self.module.id.
+        response = self.client.delete(f'/modules/{self.module.id}/')
 
         # Проверяем, что статус-код ответа равен 204 No Content.
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
@@ -123,7 +114,7 @@ class CourseTestCase(APITestCase):
         )
 
     def test_retrieve_course(self):
-        """Тест просмотра курса."""
+        """Тест просмотра определенного курса."""
 
         # Выполняем GET-запрос к URL для получения данных о конкретном курсе.
         response = self.client.get(
@@ -222,7 +213,7 @@ class LessonTestCase(APITestCase):
         )
 
     def test_retrieve_lesson(self):
-        """Тест просмотра урока."""
+        """Тест просмотра определенного урока."""
 
         # Выполняем GET-запрос к URL для получения конкретного урока по его первичному ключу (pk).
         response = self.client.get(
@@ -671,7 +662,7 @@ class SubscriptionUpdateRetrieveDeleteTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_retrieve_subscription(self):
-        """Тест получения подписки."""
+        """Тест получения определенной подписки."""
 
         # Генерируем URL для получения конкретной подписки по её ID.
         url = reverse("modules:subscription_retrieve", args=[self.subscription.id])

@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from modules.apps import ModulesConfig
 from modules.views import (
@@ -12,30 +13,19 @@ from modules.views import (
     LessonListAPIView,
     LessonRetrieveAPIView,
     LessonUpdateAPIView,
-    ModuleCreateAPIView,
-    ModuleDestroyAPIView,
-    ModuleListAPIView,
-    ModuleRetrieveAPIView,
-    ModuleUpdateAPIView,
     SubscriptionCreateAPIView,
     SubscriptionDestroyAPIView,
     SubscriptionListAPIView,
     SubscriptionRetrieveAPIView,
-    SubscriptionUpdateAPIView,
+    SubscriptionUpdateAPIView, ModuleViewSet,
 )
 
 app_name = ModulesConfig.name
 
+router = DefaultRouter()
+router.register(r"modules", ModuleViewSet, basename="modules")
+
 urlpatterns = [
-    path("modules/create/", ModuleCreateAPIView.as_view(), name="module_create"),
-    path("modules/", ModuleListAPIView.as_view(), name="module_list"),
-    path("modules/<int:pk>/", ModuleRetrieveAPIView.as_view(), name="module_retrieve"),
-    path(
-        "modules/update/<int:pk>/", ModuleUpdateAPIView.as_view(), name="module_update"
-    ),
-    path(
-        "modules/delete/<int:pk>/", ModuleDestroyAPIView.as_view(), name="module_delete"
-    ),
     path("course/", CourseListAPIView.as_view(), name="course_list"),
     path("course/create/", CourseCreateAPIView.as_view(), name="course_create"),
     path("course/update/<int:pk>", CourseUpdateAPIView.as_view(), name="course_update"),
@@ -79,4 +69,4 @@ urlpatterns = [
         SubscriptionDestroyAPIView.as_view(),
         name="subscription_delete",
     ),
-]
+] + router.urls

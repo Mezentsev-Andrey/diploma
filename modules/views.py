@@ -3,6 +3,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 
 from modules.models import Course, Lesson, Module, Subscription
 from modules.paginations import CustomPagination
@@ -14,44 +15,36 @@ from modules.serializers import (
 )
 from users.permissions import IsModerator, IsOwner
 
-
-class ModuleCreateAPIView(generics.CreateAPIView):
-    """Контроллер для создания образовательного модуля"""
-
-    serializer_class = ModuleSerializer
-    permission_classes = [IsOwner | IsAdminUser]
+from modules.tasks import send_updates
 
 
-class ModuleListAPIView(generics.ListAPIView):
-    """Контроллер для вывода списка образовательных модулей"""
-
-    serializer_class = ModuleSerializer
+class ModuleViewSet(ModelViewSet):
     queryset = Module.objects.all()
+    serializer_class = ModuleSerializer
+    permission_classes = (AllowAny,)
     pagination_class = CustomPagination
-    permission_classes = [AllowAny]
 
+    def perform_create(self, serializer):
+        module = serializer.save()
+        module.owner = self.request.user
+        module.save()
 
-class ModuleRetrieveAPIView(generics.RetrieveAPIView):
-    """Контроллер для просмотра образовательного модуля"""
+    def get_permissions(self):
+        if self.action == "create":
+            self.permission_classes = [IsModerator | IsOwner, IsAdminUser]
+        elif self.action in ["update", "retrieve"]:
+            self.permission_classes = [IsModerator | IsOwner, IsAdminUser]
+        elif self.action == "destroy":
+            self.permission_classes = [IsModerator | IsAdminUser]
+        return super().get_permissions()
 
-    serializer_class = ModuleSerializer
-    queryset = Module.objects.all()
-    permission_classes = [AllowAny]
-
-
-class ModuleUpdateAPIView(generics.UpdateAPIView):
-    """Контроллер для изменения образовательного модуля"""
-
-    serializer_class = ModuleSerializer
-    queryset = Module.objects.all()
-    permission_classes = [IsOwner | IsAdminUser]
-
-
-class ModuleDestroyAPIView(generics.DestroyAPIView):
-    """Контроллер для удаления образовательного модуля"""
-
-    queryset = Module.objects.all()
-    permission_classes = [IsOwner | IsAdminUser]
+    def partial_update(self, request, *args, **kwargs):
+        module_item = get_object_or_404(self.queryset, pk=kwargs.get("pk"))
+        serializer = self.serializer_class(module_item, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        send_updates.delay(module_item.id)
+        return Response(serializer.data)
 
 
 class CourseListAPIView(generics.ListAPIView):
@@ -60,22 +53,15 @@ class CourseListAPIView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     permission_classes = [AllowAny]
+    pagination_class = CustomPagination
 
 
 class CourseRetrieveAPIView(generics.RetrieveAPIView):
-    """Контроллер для просмотра урока курса."""
-
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-    permission_classes = [IsAuthenticated, IsModerator | IsOwner, IsAdminUser]
-
-
-class CourseDetailAPIView(generics.RetrieveAPIView):
     """Контроллер для детального просмотра курса образовательного модуля."""
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = IsAuthenticated
+    permission_classes = [IsAuthenticated, IsModerator | IsOwner, IsAdminUser]
 
 
 class CourseCreateAPIView(generics.CreateAPIView):
@@ -153,7 +139,6 @@ class SubscriptionListAPIView(generics.ListAPIView):
 
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-    pagination_class = CustomPagination
     permission_classes = [AllowAny]
 
 
@@ -246,7 +231,7 @@ class SubscriptionRetrieveAPIView(generics.RetrieveAPIView):
 
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
+    permission_classes = [IsModerator | IsAdminUser]
 
 
 class SubscriptionDestroyAPIView(generics.DestroyAPIView):
@@ -254,4 +239,4 @@ class SubscriptionDestroyAPIView(generics.DestroyAPIView):
 
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-    permission_classes = [IsAuthenticated, IsModerator | IsAdminUser]
+    permission_classes = [IsModerator | IsAdminUser]
