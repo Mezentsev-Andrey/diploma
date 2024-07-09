@@ -1,1 +1,350 @@
-[{"model": "auth.permission", "pk": 1, "fields": {"name": "Can add log entry", "content_type": 1, "codename": "add_logentry"}}, {"model": "auth.permission", "pk": 2, "fields": {"name": "Can change log entry", "content_type": 1, "codename": "change_logentry"}}, {"model": "auth.permission", "pk": 3, "fields": {"name": "Can delete log entry", "content_type": 1, "codename": "delete_logentry"}}, {"model": "auth.permission", "pk": 4, "fields": {"name": "Can view log entry", "content_type": 1, "codename": "view_logentry"}}, {"model": "auth.permission", "pk": 5, "fields": {"name": "Can add permission", "content_type": 2, "codename": "add_permission"}}, {"model": "auth.permission", "pk": 6, "fields": {"name": "Can change permission", "content_type": 2, "codename": "change_permission"}}, {"model": "auth.permission", "pk": 7, "fields": {"name": "Can delete permission", "content_type": 2, "codename": "delete_permission"}}, {"model": "auth.permission", "pk": 8, "fields": {"name": "Can view permission", "content_type": 2, "codename": "view_permission"}}, {"model": "auth.permission", "pk": 9, "fields": {"name": "Can add group", "content_type": 3, "codename": "add_group"}}, {"model": "auth.permission", "pk": 10, "fields": {"name": "Can change group", "content_type": 3, "codename": "change_group"}}, {"model": "auth.permission", "pk": 11, "fields": {"name": "Can delete group", "content_type": 3, "codename": "delete_group"}}, {"model": "auth.permission", "pk": 12, "fields": {"name": "Can view group", "content_type": 3, "codename": "view_group"}}, {"model": "auth.permission", "pk": 13, "fields": {"name": "Can add content type", "content_type": 4, "codename": "add_contenttype"}}, {"model": "auth.permission", "pk": 14, "fields": {"name": "Can change content type", "content_type": 4, "codename": "change_contenttype"}}, {"model": "auth.permission", "pk": 15, "fields": {"name": "Can delete content type", "content_type": 4, "codename": "delete_contenttype"}}, {"model": "auth.permission", "pk": 16, "fields": {"name": "Can view content type", "content_type": 4, "codename": "view_contenttype"}}, {"model": "auth.permission", "pk": 17, "fields": {"name": "Can add session", "content_type": 5, "codename": "add_session"}}, {"model": "auth.permission", "pk": 18, "fields": {"name": "Can change session", "content_type": 5, "codename": "change_session"}}, {"model": "auth.permission", "pk": 19, "fields": {"name": "Can delete session", "content_type": 5, "codename": "delete_session"}}, {"model": "auth.permission", "pk": 20, "fields": {"name": "Can view session", "content_type": 5, "codename": "view_session"}}, {"model": "auth.permission", "pk": 21, "fields": {"name": "Can add crontab", "content_type": 6, "codename": "add_crontabschedule"}}, {"model": "auth.permission", "pk": 22, "fields": {"name": "Can change crontab", "content_type": 6, "codename": "change_crontabschedule"}}, {"model": "auth.permission", "pk": 23, "fields": {"name": "Can delete crontab", "content_type": 6, "codename": "delete_crontabschedule"}}, {"model": "auth.permission", "pk": 24, "fields": {"name": "Can view crontab", "content_type": 6, "codename": "view_crontabschedule"}}, {"model": "auth.permission", "pk": 25, "fields": {"name": "Can add interval", "content_type": 7, "codename": "add_intervalschedule"}}, {"model": "auth.permission", "pk": 26, "fields": {"name": "Can change interval", "content_type": 7, "codename": "change_intervalschedule"}}, {"model": "auth.permission", "pk": 27, "fields": {"name": "Can delete interval", "content_type": 7, "codename": "delete_intervalschedule"}}, {"model": "auth.permission", "pk": 28, "fields": {"name": "Can view interval", "content_type": 7, "codename": "view_intervalschedule"}}, {"model": "auth.permission", "pk": 29, "fields": {"name": "Can add periodic task", "content_type": 8, "codename": "add_periodictask"}}, {"model": "auth.permission", "pk": 30, "fields": {"name": "Can change periodic task", "content_type": 8, "codename": "change_periodictask"}}, {"model": "auth.permission", "pk": 31, "fields": {"name": "Can delete periodic task", "content_type": 8, "codename": "delete_periodictask"}}, {"model": "auth.permission", "pk": 32, "fields": {"name": "Can view periodic task", "content_type": 8, "codename": "view_periodictask"}}, {"model": "auth.permission", "pk": 33, "fields": {"name": "Can add periodic tasks", "content_type": 9, "codename": "add_periodictasks"}}, {"model": "auth.permission", "pk": 34, "fields": {"name": "Can change periodic tasks", "content_type": 9, "codename": "change_periodictasks"}}, {"model": "auth.permission", "pk": 35, "fields": {"name": "Can delete periodic tasks", "content_type": 9, "codename": "delete_periodictasks"}}, {"model": "auth.permission", "pk": 36, "fields": {"name": "Can view periodic tasks", "content_type": 9, "codename": "view_periodictasks"}}, {"model": "auth.permission", "pk": 37, "fields": {"name": "Can add solar event", "content_type": 10, "codename": "add_solarschedule"}}, {"model": "auth.permission", "pk": 38, "fields": {"name": "Can change solar event", "content_type": 10, "codename": "change_solarschedule"}}, {"model": "auth.permission", "pk": 39, "fields": {"name": "Can delete solar event", "content_type": 10, "codename": "delete_solarschedule"}}, {"model": "auth.permission", "pk": 40, "fields": {"name": "Can view solar event", "content_type": 10, "codename": "view_solarschedule"}}, {"model": "auth.permission", "pk": 41, "fields": {"name": "Can add clocked", "content_type": 11, "codename": "add_clockedschedule"}}, {"model": "auth.permission", "pk": 42, "fields": {"name": "Can change clocked", "content_type": 11, "codename": "change_clockedschedule"}}, {"model": "auth.permission", "pk": 43, "fields": {"name": "Can delete clocked", "content_type": 11, "codename": "delete_clockedschedule"}}, {"model": "auth.permission", "pk": 44, "fields": {"name": "Can view clocked", "content_type": 11, "codename": "view_clockedschedule"}}, {"model": "auth.permission", "pk": 45, "fields": {"name": "Can add Курс", "content_type": 12, "codename": "add_course"}}, {"model": "auth.permission", "pk": 46, "fields": {"name": "Can change Курс", "content_type": 12, "codename": "change_course"}}, {"model": "auth.permission", "pk": 47, "fields": {"name": "Can delete Курс", "content_type": 12, "codename": "delete_course"}}, {"model": "auth.permission", "pk": 48, "fields": {"name": "Can view Курс", "content_type": 12, "codename": "view_course"}}, {"model": "auth.permission", "pk": 49, "fields": {"name": "Can add Урок", "content_type": 13, "codename": "add_lesson"}}, {"model": "auth.permission", "pk": 50, "fields": {"name": "Can change Урок", "content_type": 13, "codename": "change_lesson"}}, {"model": "auth.permission", "pk": 51, "fields": {"name": "Can delete Урок", "content_type": 13, "codename": "delete_lesson"}}, {"model": "auth.permission", "pk": 52, "fields": {"name": "Can view Урок", "content_type": 13, "codename": "view_lesson"}}, {"model": "auth.permission", "pk": 53, "fields": {"name": "Can add Модуль", "content_type": 14, "codename": "add_module"}}, {"model": "auth.permission", "pk": 54, "fields": {"name": "Can change Модуль", "content_type": 14, "codename": "change_module"}}, {"model": "auth.permission", "pk": 55, "fields": {"name": "Can delete Модуль", "content_type": 14, "codename": "delete_module"}}, {"model": "auth.permission", "pk": 56, "fields": {"name": "Can view Модуль", "content_type": 14, "codename": "view_module"}}, {"model": "auth.permission", "pk": 57, "fields": {"name": "Can add Подписка", "content_type": 15, "codename": "add_subscription"}}, {"model": "auth.permission", "pk": 58, "fields": {"name": "Can change Подписка", "content_type": 15, "codename": "change_subscription"}}, {"model": "auth.permission", "pk": 59, "fields": {"name": "Can delete Подписка", "content_type": 15, "codename": "delete_subscription"}}, {"model": "auth.permission", "pk": 60, "fields": {"name": "Can view Подписка", "content_type": 15, "codename": "view_subscription"}}, {"model": "auth.permission", "pk": 61, "fields": {"name": "Can add Пользователь", "content_type": 16, "codename": "add_user"}}, {"model": "auth.permission", "pk": 62, "fields": {"name": "Can change Пользователь", "content_type": 16, "codename": "change_user"}}, {"model": "auth.permission", "pk": 63, "fields": {"name": "Can delete Пользователь", "content_type": 16, "codename": "delete_user"}}, {"model": "auth.permission", "pk": 64, "fields": {"name": "Can view Пользователь", "content_type": 16, "codename": "view_user"}}, {"model": "contenttypes.contenttype", "pk": 1, "fields": {"app_label": "admin", "model": "logentry"}}, {"model": "contenttypes.contenttype", "pk": 2, "fields": {"app_label": "auth", "model": "permission"}}, {"model": "contenttypes.contenttype", "pk": 3, "fields": {"app_label": "auth", "model": "group"}}, {"model": "contenttypes.contenttype", "pk": 4, "fields": {"app_label": "contenttypes", "model": "contenttype"}}, {"model": "contenttypes.contenttype", "pk": 5, "fields": {"app_label": "sessions", "model": "session"}}, {"model": "contenttypes.contenttype", "pk": 6, "fields": {"app_label": "django_celery_beat", "model": "crontabschedule"}}, {"model": "contenttypes.contenttype", "pk": 7, "fields": {"app_label": "django_celery_beat", "model": "intervalschedule"}}, {"model": "contenttypes.contenttype", "pk": 8, "fields": {"app_label": "django_celery_beat", "model": "periodictask"}}, {"model": "contenttypes.contenttype", "pk": 9, "fields": {"app_label": "django_celery_beat", "model": "periodictasks"}}, {"model": "contenttypes.contenttype", "pk": 10, "fields": {"app_label": "django_celery_beat", "model": "solarschedule"}}, {"model": "contenttypes.contenttype", "pk": 11, "fields": {"app_label": "django_celery_beat", "model": "clockedschedule"}}, {"model": "contenttypes.contenttype", "pk": 12, "fields": {"app_label": "modules", "model": "course"}}, {"model": "contenttypes.contenttype", "pk": 13, "fields": {"app_label": "modules", "model": "lesson"}}, {"model": "contenttypes.contenttype", "pk": 14, "fields": {"app_label": "modules", "model": "module"}}, {"model": "contenttypes.contenttype", "pk": 15, "fields": {"app_label": "modules", "model": "subscription"}}, {"model": "contenttypes.contenttype", "pk": 16, "fields": {"app_label": "users", "model": "user"}}, {"model": "sessions.session", "pk": "f828hk65wrc2fjxfv8e3lvxlo7k2dpzc", "fields": {"session_data": ".eJxVjMsOwiAUBf-FtSHQVLi4dO83EO4DqRpISrtq_Hdt0oVuz8ycTcW0LiWuXeY4sbooq06_GyZ6St0BP1K9N02tLvOEelf0Qbu-NZbX9XD_Dkrq5Vu7zGPKDkEQUQwGa4UH58ibQYCFJdjRQhD2nkL2KN4QMJiRUPgM6v0BG6c5Ow:1sP0Y8:JFfiFkYlHEyE_OooX4EsT4eXZOicjWaXoJTBZIUOtoU", "expire_date": "2024-07-17T14:01:32.497Z"}}, {"model": "modules.module", "pk": 1, "fields": {"title": "1. Модуль: Основы веб-разработки", "description": "Данный модуль предназначен для начинающих и охватывает ключевые аспекты создания веб-сайтов и веб-приложений. Студенты получат фундаментальные знания и навыки, необходимые для разработки современных веб-проектов. Модуль включает в себя изучение базовых технологий, таких как HTML и CSS, которые являются основными строительными блоками веб-страниц, а также основ JavaScript, который позволяет добавлять интерактивность и динамическое поведение.", "owner": null, "price": 10000}}, {"model": "modules.module", "pk": 2, "fields": {"title": "2. Модуль: Программирование на Python", "description": "Данный модуль - это комплексная учебная программа, предназначенная для обучения студентов и профессионалов основам и продвинутым аспектам одного из самых популярных языков программирования. Программа охватывает широкий спектр тем, начиная с базового синтаксиса и структур данных и заканчивая разработкой веб-приложений и машинным обучением.", "owner": null, "price": 10000}}, {"model": "modules.course", "pk": 1, "fields": {"module": 1, "title": "Курс 1: Введение в веб-разработку", "preview": "", "description": "Этот курс служит отправной точкой для всех, кто хочет начать карьеру в веб-разработке. Мы охватим основные понятия и технологии, которые составляют основу создания веб-сайтов. Студенты получат общее представление о процессе веб-разработки, узнают о различиях между фронтенд- и бэкенд-разработкой, а также познакомятся с архитектурой веб-приложений и принципами работы интернета.", "owner": null, "price": 5000}}, {"model": "modules.course", "pk": 2, "fields": {"module": 1, "title": "Курс 2: HTML и CSS: Создание веб-страниц", "preview": "", "description": "Этот курс познакомит вас с базовыми элементами HTML и CSS, которые являются основными строительными блоками веб-страниц. Вы научитесь создавать и структурировать веб-страницы, а также стилизовать их с помощью CSS.", "owner": null, "price": 5000}}, {"model": "modules.course", "pk": 3, "fields": {"module": 1, "title": "Курс 3: JavaScript для начинающих", "preview": "", "description": "В этом курсе вы узнаете основы JavaScript — языка программирования, который оживляет веб-страницы. Вы научитесь добавлять интерактивность и динамическое поведение вашим веб-страницам.", "owner": null, "price": 5000}}, {"model": "modules.course", "pk": 4, "fields": {"module": 2, "title": "Курс 1: Основы Python", "preview": "", "description": "Курс предназначен для тех, кто делает первые шаги в программировании и хочет освоить Python с нуля. Этот курс охватывает все ключевые концепции, необходимые для понимания и начала работы с этим мощным и универсальным языком программирования. Python отличается своей простотой и читабельностью, что делает его идеальным для новичков. В рамках этого курса вы получите базовые знания о том, как создавать программы, управлять данными и использовать основные конструкции языка.", "owner": null, "price": 5000}}, {"model": "modules.course", "pk": 5, "fields": {"module": 2, "title": "Курс 2: Продвинутые концепции Python", "preview": "", "description": "Курс предназначен для тех, кто уже знаком с основами языка Python и стремится углубить свои знания, чтобы использовать его для более сложных задач и проектов. Этот курс охватывает более сложные темы, которые помогут вам написать более эффективный, устойчивый и масштабируемый код.", "owner": null, "price": 5000}}, {"model": "modules.course", "pk": 6, "fields": {"module": 2, "title": "Курс 3: Углубленное изучение Python", "preview": "", "description": "Курс разработан для опытных программистов, желающих максимально раскрыть потенциал Python. Этот курс охватывает продвинутые темы и техники, которые помогут вам писать более эффективный, производительный и современный код. Вы научитесь работать с итераторами, декораторами, асинхронными операциями и многим другим, что делает Python идеальным выбором для решения сложных задач.", "owner": null, "price": 5000}}, {"model": "modules.lesson", "pk": 1, "fields": {"course": 1, "title": "Урок 1: Основы веб-технологий", "description": "На уроке узнаете: 1. Как работает интернет, 2. Что такое клиент-серверная архитектура.3. Введение в фронтенд и бэкенд-разработку.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 2, "fields": {"course": 1, "title": "Урок 2: Основы HTML", "description": "На уроке узнаете: 1. Основная структура HTML-документа; 2. Основные теги и атрибуты; 3. Создание заголовков, абзацев, списков и ссылок", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 3, "fields": {"course": 1, "title": "Урок 3: Основы CSS", "description": "На уроке узнаете: 1. Основы стилизации веб-страниц; 2. Селекторы и свойства CSS; 3. Работа с цветами, шрифтами и макетами.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 4, "fields": {"course": 2, "title": "Урок 1: Создание страницы портфолио", "description": "На уроке: 1. Создадите HTML-страницу, которая представляет ваше портфолио. 2. Включите разделы для вашего имени, краткой биографии, списка проектов с изображениями и ссылками на них.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 5, "fields": {"course": 2, "title": "Урок 2: Разметка блога", "description": "На уроке: 1. Разработаете страницу блога с использованием HTML;2. Включите заголовки, абзацы текста, изображения и ссылки. 3. Добавите форму для комментариев.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 6, "fields": {"course": 2, "title": "Урок 3: Стилизация с помощью CSS", "description": "На уроке: 1. Примените стили CSS для оформления простой HTML-страницы; 2. Используете цвета, шрифты, отступы и границы для улучшения визуального восприятия. 3. Добавите стили для ссылок и кнопок.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 7, "fields": {"course": 3, "title": "Урок 1: Интерактивный калькулятор", "description": "На уроке: 1. Создадите простую страницу HTML с калькулятором; 2. Используете JavaScript для выполнения основных арифметических операций. 3. Реализуете обработку нажатий на кнопки и обновление результата на экране", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 8, "fields": {"course": 3, "title": "Урок 2: Динамическая галерея изображений", "description": "На уроке: 1. Разработаете галерею изображений с JavaScript, которая позволяет пользователю переключаться между изображениями. 2.Реализуете кнопки для перехода к следующему и предыдущему изображению.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 9, "fields": {"course": 3, "title": "Урок 3: Проверка формы", "description": "На уроке: 1. Создадите форму регистрации с JavaScript-проверкой ввода. 2. Проверите, чтобы все обязательные поля были заполнены, и чтобы email был в правильном формате. 3. Отобразите сообщения об ошибках пользователю.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 10, "fields": {"course": 4, "title": "Урок 1: Введение в Python", "description": "В уроке: 1. Установка Python и настройка среды разработки. 2.Написание и выполнение первой программы 'Hello, World!'. 3.Основные элементы и структура программы на Python.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 11, "fields": {"course": 4, "title": "Урок 2: Переменные и типы данных", "description": "В уроке: 1. Понимание типов данных (строки, числа, логические значения) и создание переменных; 2. Преобразование типов данных и использование функций для определения типа переменной.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 12, "fields": {"course": 4, "title": "Урок 3: Условные операторы", "description": "В уроке: 1. Использование условных операторов if, elif и else для управления потоком программы. 2. Понимание логических операторов (and, or, not) и их применение в условиях. 3. Работа с вложенными условиями.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 13, "fields": {"course": 5, "title": "Урок 1: Обработка ошибок и исключений:", "description": "В уроке: 1. Понимание важности обработки ошибок для создания надежного кода; 2. Использование блоков try, except, finally и else для перехвата и обработки исключений. 3. Распознавание и управление распространенными исключениями в Python.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 14, "fields": {"course": 5, "title": "Урок 2: Работа с файлами:", "description": "В уроке: 1. Открытие, чтение и запись файлов для хранения и обработки данных. 2. Использование менеджеров контекста (with) для безопасного управления файлами. 3. Понимание различных режимов работы с файлами (чтение, запись, добавление).", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 15, "fields": {"course": 5, "title": "Урок 3: Модули и пакеты", "description": "В уроке: 1. Импорт и использование стандартных и сторонних модулей для расширения функциональности программ. 2. Создание собственных модулей для структурирования и повторного использования кода. 3. Понимание пакетов и их роли в организации и управлении кодом.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 16, "fields": {"course": 6, "title": "Урок 1: Генераторы и итераторы", "description": "В уроке: 1. Создание генераторов для удобного и ленивого (отложенного) вычисления последовательностей данных; 2. Понимание и использование итераторов для эффективного обхода коллекций; 3. Применение выражений генераторов для краткой и читаемой генерации последовательностей.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 17, "fields": {"course": 6, "title": "Урок 2: Декораторы и контекстные менеджеры", "description": "В уроке: 1. Создание и использование декораторов для расширения функциональности функций и методов; 2. Понимание концепции контекстных менеджеров и их применение для безопасного управления ресурсами; 3. Создание собственных контекстных менеджеров для специфических задач.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.lesson", "pk": 18, "fields": {"course": 6, "title": "Урок 3: Асинхронное программирование", "description": "В уроке: 1. Основы асинхронного программирования и его преимущества в обработке IO-операций; 2. Использование библиотеки asyncio для создания и управления асинхронными задачами. 3. Работа с async и await для создания неблокирующего кода.", "preview": "", "video": null, "owner": 1}}, {"model": "modules.subscription", "pk": 38, "fields": {"subscriber": 1, "subscription_type": "course", "module": 2, "course": 1}}, {"model": "modules.subscription", "pk": 41, "fields": {"subscriber": 1, "subscription_type": "", "module": 1, "course": null}}, {"model": "modules.subscription", "pk": 42, "fields": {"subscriber": 1, "subscription_type": "module", "module": 2, "course": null}}, {"model": "users.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$600000$PbXv3BzktOgxNiEnZJjrY8$DMxNQyWseO96xbJkXEf6yooZ5tkWLqfvCLmdRik05Wo=", "last_login": "2024-07-03T14:01:32.489Z", "is_superuser": true, "first_name": "Admin", "last_name": "SkyPro", "is_staff": true, "is_active": true, "date_joined": "2024-07-03T14:00:27.554Z", "email": "mezentsew@mail.ru", "avatar": "", "phone_number": null, "city": null, "groups": [], "user_permissions": []}}, {"model": "users.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$600000$e5xvLael5OEtzIKJjJaurV$3oP7Igd2vwfqvAYt7GxzSIj+0Qx9fhw29vgPUwdvSqg=", "last_login": null, "is_superuser": false, "first_name": "", "last_name": "", "is_staff": false, "is_active": true, "date_joined": "2024-07-05T10:25:45.071Z", "email": "novorossiec2018@mail.ru", "avatar": "", "phone_number": null, "city": null, "groups": [], "user_permissions": []}}]
+[
+  {
+    "model": "modules.module",
+    "pk": 1,
+    "fields": {
+      "title": "1. Модуль: Основы веб-разработки. Наша модуль обновился",
+      "description": "Данный модуль предназначен для начинающих и охватывает ключевые аспекты создания веб-сайтов и веб-приложений. Студенты получат фундаментальные знания и навыки, необходимые для разработки современных веб-проектов. Модуль включает в себя изучение базовых технологий, таких как HTML и CSS, которые являются основными строительными блоками веб-страниц, а также основ JavaScript, который позволяет добавлять интерактивность и динамическое поведение.",
+      "owner": 1,
+      "price": 10000
+    }
+  },
+  {
+    "model": "modules.module",
+    "pk": 2,
+    "fields": {
+      "title": "2. Модуль: Программирование на Python",
+      "description": "Данный модуль - это комплексная учебная программа, предназначенная для обучения студентов и профессионалов основам и продвинутым аспектам одного из самых популярных языков программирования. Программа охватывает широкий спектр тем, начиная с базового синтаксиса и структур данных и заканчивая разработкой веб-приложений и машинным обучением.",
+      "owner": null,
+      "price": 10000
+    }
+  },
+  {
+    "model": "modules.module",
+    "pk": 3,
+    "fields": {
+      "title": "Модуль 3. Проверочный. Проверка что курс обновился. Еще раз и раз. Обновление",
+      "description": "Проверка создания образовательного модуля. Наш курс обновился еще раз.",
+      "owner": 1,
+      "price": 10000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 1,
+    "fields": {
+      "module": 1,
+      "title": "Курс 1: Введение в веб-разработку",
+      "preview": "",
+      "description": "Этот курс служит отправной точкой для всех, кто хочет начать карьеру в веб-разработке. Мы охватим основные понятия и технологии, которые составляют основу создания веб-сайтов. Студенты получат общее представление о процессе веб-разработки, узнают о различиях между фронтенд- и бэкенд-разработкой, а также познакомятся с архитектурой веб-приложений и принципами работы интернета.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 2,
+    "fields": {
+      "module": 1,
+      "title": "Курс 2: HTML и CSS: Создание веб-страниц",
+      "preview": "",
+      "description": "Этот курс познакомит вас с базовыми элементами HTML и CSS, которые являются основными строительными блоками веб-страниц. Вы научитесь создавать и структурировать веб-страницы, а также стилизовать их с помощью CSS.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 3,
+    "fields": {
+      "module": 1,
+      "title": "Курс 3: JavaScript для начинающих",
+      "preview": "",
+      "description": "В этом курсе вы узнаете основы JavaScript — языка программирования, который оживляет веб-страницы. Вы научитесь добавлять интерактивность и динамическое поведение вашим веб-страницам.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 4,
+    "fields": {
+      "module": 2,
+      "title": "Курс 1: Основы Python",
+      "preview": "",
+      "description": "Курс предназначен для тех, кто делает первые шаги в программировании и хочет освоить Python с нуля. Этот курс охватывает все ключевые концепции, необходимые для понимания и начала работы с этим мощным и универсальным языком программирования. Python отличается своей простотой и читабельностью, что делает его идеальным для новичков. В рамках этого курса вы получите базовые знания о том, как создавать программы, управлять данными и использовать основные конструкции языка.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 5,
+    "fields": {
+      "module": 2,
+      "title": "Курс 2: Продвинутые концепции Python",
+      "preview": "",
+      "description": "Курс предназначен для тех, кто уже знаком с основами языка Python и стремится углубить свои знания, чтобы использовать его для более сложных задач и проектов. Этот курс охватывает более сложные темы, которые помогут вам написать более эффективный, устойчивый и масштабируемый код.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.course",
+    "pk": 6,
+    "fields": {
+      "module": 2,
+      "title": "Курс 3: Углубленное изучение Python",
+      "preview": "",
+      "description": "Курс разработан для опытных программистов, желающих максимально раскрыть потенциал Python. Этот курс охватывает продвинутые темы и техники, которые помогут вам писать более эффективный, производительный и современный код. Вы научитесь работать с итераторами, декораторами, асинхронными операциями и многим другим, что делает Python идеальным выбором для решения сложных задач.",
+      "owner": null,
+      "price": 5000
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 1,
+    "fields": {
+      "course": 1,
+      "title": "Урок 1: Основы веб-технологий",
+      "description": "На уроке узнаете: 1. Как работает интернет, 2. Что такое клиент-серверная архитектура.3. Введение в фронтенд и бэкенд-разработку.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 2,
+    "fields": {
+      "course": 1,
+      "title": "Урок 2: Основы HTML",
+      "description": "На уроке узнаете: 1. Основная структура HTML-документа; 2. Основные теги и атрибуты; 3. Создание заголовков, абзацев, списков и ссылок",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 3,
+    "fields": {
+      "course": 1,
+      "title": "Урок 3: Основы CSS",
+      "description": "На уроке узнаете: 1. Основы стилизации веб-страниц; 2. Селекторы и свойства CSS; 3. Работа с цветами, шрифтами и макетами.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 4,
+    "fields": {
+      "course": 2,
+      "title": "Урок 1: Создание страницы портфолио",
+      "description": "На уроке: 1. Создадите HTML-страницу, которая представляет ваше портфолио. 2. Включите разделы для вашего имени, краткой биографии, списка проектов с изображениями и ссылками на них.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 5,
+    "fields": {
+      "course": 2,
+      "title": "Урок 2: Разметка блога",
+      "description": "На уроке: 1. Разработаете страницу блога с использованием HTML;2. Включите заголовки, абзацы текста, изображения и ссылки. 3. Добавите форму для комментариев.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 6,
+    "fields": {
+      "course": 2,
+      "title": "Урок 3: Стилизация с помощью CSS",
+      "description": "На уроке: 1. Примените стили CSS для оформления простой HTML-страницы; 2. Используете цвета, шрифты, отступы и границы для улучшения визуального восприятия. 3. Добавите стили для ссылок и кнопок.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 7,
+    "fields": {
+      "course": 3,
+      "title": "Урок 1: Интерактивный калькулятор",
+      "description": "На уроке: 1. Создадите простую страницу HTML с калькулятором; 2. Используете JavaScript для выполнения основных арифметических операций. 3. Реализуете обработку нажатий на кнопки и обновление результата на экране",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 8,
+    "fields": {
+      "course": 3,
+      "title": "Урок 2: Динамическая галерея изображений",
+      "description": "На уроке: 1. Разработаете галерею изображений с JavaScript, которая позволяет пользователю переключаться между изображениями. 2.Реализуете кнопки для перехода к следующему и предыдущему изображению.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 9,
+    "fields": {
+      "course": 3,
+      "title": "Урок 3: Проверка формы",
+      "description": "На уроке: 1. Создадите форму регистрации с JavaScript-проверкой ввода. 2. Проверите, чтобы все обязательные поля были заполнены, и чтобы email был в правильном формате. 3. Отобразите сообщения об ошибках пользователю.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 10,
+    "fields": {
+      "course": 4,
+      "title": "Урок 1: Введение в Python",
+      "description": "В уроке: 1. Установка Python и настройка среды разработки. 2.Написание и выполнение первой программы 'Hello, World!'. 3.Основные элементы и структура программы на Python.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 11,
+    "fields": {
+      "course": 4,
+      "title": "Урок 2: Переменные и типы данных",
+      "description": "В уроке: 1. Понимание типов данных (строки, числа, логические значения) и создание переменных; 2. Преобразование типов данных и использование функций для определения типа переменной.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 12,
+    "fields": {
+      "course": 4,
+      "title": "Урок 3: Условные операторы",
+      "description": "В уроке: 1. Использование условных операторов if, elif и else для управления потоком программы. 2. Понимание логических операторов (and, or, not) и их применение в условиях. 3. Работа с вложенными условиями.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 13,
+    "fields": {
+      "course": 5,
+      "title": "Урок 1: Обработка ошибок и исключений:",
+      "description": "В уроке: 1. Понимание важности обработки ошибок для создания надежного кода; 2. Использование блоков try, except, finally и else для перехвата и обработки исключений. 3. Распознавание и управление распространенными исключениями в Python.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 14,
+    "fields": {
+      "course": 5,
+      "title": "Урок 2: Работа с файлами:",
+      "description": "В уроке: 1. Открытие, чтение и запись файлов для хранения и обработки данных. 2. Использование менеджеров контекста (with) для безопасного управления файлами. 3. Понимание различных режимов работы с файлами (чтение, запись, добавление).",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 15,
+    "fields": {
+      "course": 5,
+      "title": "Урок 3: Модули и пакеты",
+      "description": "В уроке: 1. Импорт и использование стандартных и сторонних модулей для расширения функциональности программ. 2. Создание собственных модулей для структурирования и повторного использования кода. 3. Понимание пакетов и их роли в организации и управлении кодом.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 16,
+    "fields": {
+      "course": 6,
+      "title": "Урок 1: Генераторы и итераторы",
+      "description": "В уроке: 1. Создание генераторов для удобного и ленивого (отложенного) вычисления последовательностей данных; 2. Понимание и использование итераторов для эффективного обхода коллекций; 3. Применение выражений генераторов для краткой и читаемой генерации последовательностей.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 17,
+    "fields": {
+      "course": 6,
+      "title": "Урок 2: Декораторы и контекстные менеджеры",
+      "description": "В уроке: 1. Создание и использование декораторов для расширения функциональности функций и методов; 2. Понимание концепции контекстных менеджеров и их применение для безопасного управления ресурсами; 3. Создание собственных контекстных менеджеров для специфических задач.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.lesson",
+    "pk": 18,
+    "fields": {
+      "course": 6,
+      "title": "Урок 3: Асинхронное программирование",
+      "description": "В уроке: 1. Основы асинхронного программирования и его преимущества в обработке IO-операций; 2. Использование библиотеки asyncio для создания и управления асинхронными задачами. 3. Работа с async и await для создания неблокирующего кода.",
+      "preview": "",
+      "video": null,
+      "owner": 1
+    }
+  },
+  {
+    "model": "modules.subscription",
+    "pk": 47,
+    "fields": {
+      "subscriber": 1,
+      "subscription_type": "module",
+      "module": 1,
+      "course": null
+    }
+  },
+  {
+    "model": "modules.subscription",
+    "pk": 49,
+    "fields": {
+      "subscriber": 1,
+      "subscription_type": "module",
+      "module": 3,
+      "course": null
+    }
+  },
+  {
+    "model": "modules.subscription",
+    "pk": 50,
+    "fields": {
+      "subscriber": 2,
+      "subscription_type": "module",
+      "module": 3,
+      "course": null
+    }
+  }
+]
