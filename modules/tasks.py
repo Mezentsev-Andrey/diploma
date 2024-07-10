@@ -10,6 +10,7 @@ from modules.models import Subscription
 @shared_task
 def send_updates(item: typing.Any) -> typing.Any:
     """Отправляет уведомления об обновлениях модуля на почту подписчикам."""
+
     active_subscriptions = Subscription.objects.filter(module=item)
     if active_subscriptions:
         for item in active_subscriptions:
@@ -17,6 +18,6 @@ def send_updates(item: typing.Any) -> typing.Any:
                 subject=f"Обновление модуля {item.module.title}",
                 message=f"Информируем, что модуль {item.module.title} обновлен",
                 from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[item.user.email],
+                recipient_list=[item.subscriber.email],
                 fail_silently=False,
             )
