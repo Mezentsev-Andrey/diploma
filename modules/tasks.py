@@ -15,8 +15,8 @@ def send_updates(item: typing.Any) -> typing.Any:
     if active_subscriptions:
         for item in active_subscriptions:
             send_mail(
-                subject=f"Обновление модуля {item.module.title}",
-                message=f"Информируем, что модуль {item.module.title} обновлен",
+                subject=f"Обновление модуля: '{item.module.title}'",
+                message=f"Информируем, что обновлен модуль: '{item.module.title}'",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[item.subscriber.email],
                 fail_silently=False,

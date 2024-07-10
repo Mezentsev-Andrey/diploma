@@ -37,7 +37,7 @@
     - EMAIL_HOST=`"хост электронной почты"`;
     - EMAIL_PORT=`"порт электронной почты"`;
     - EMAIL_HOST_USER=`"пользователь электронной почты"`;
-    - EMAIL_HOST_PASSWORD=`"пароль электронной почты"`;
+    - EMAIL_HOST_PASSWORD=`"сгенерированный пароль для SMTP Django"`;
     
    2.2. Настройка Celery:
    - CELERY_BROKER_URL=`"URL брокера Celery"`;

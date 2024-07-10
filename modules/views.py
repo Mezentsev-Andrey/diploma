@@ -21,7 +21,7 @@ from modules.tasks import send_updates
 class ModuleViewSet(ModelViewSet):
     queryset = Module.objects.all()
     serializer_class = ModuleSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = [AllowAny]
     pagination_class = CustomPagination
 
     def perform_create(self, serializer):
