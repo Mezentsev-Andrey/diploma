@@ -17,7 +17,7 @@
 ## Технологии
 
 - Python;
-- Django (Django REST framework, Celery);
+- Django (Django Rest Framework, Celery);
 - PostgreSQL (БД для хранения данных);
 - Docker.
 
@@ -61,11 +61,11 @@
 7. Виды запросов в Postman: 
 
    Запросы в Postman для образовательного модуля:
-    - POST: http://localhost:8000/modules/create/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: name, description);
+    - POST: http://localhost:8000/modules/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: name, description);
     - GET: (получить список модулей): http://localhost:8000/modules/;
-    - GET: (получить конкретный модуль): http://localhost:8000/modules/retrieve/<pk модуля>/;
-    - PUT: http://localhost:8000/modules/update/<pk модуля>/ (заполнить тело, выбрав параметры 'raw' и 'json');
-    - DELETE: http://localhost:8000/modules/delete/<pk модуля>/.
+    - GET: (получить конкретный модуль): http://localhost:8000/modules/<pk модуля>/;
+    - PUT: http://localhost:8000/modules/<pk модуля>/ (заполнить тело, выбрав параметры 'raw' и 'json');
+    - DELETE: http://localhost:8000/modules/<pk модуля>/.
    
    Запросы в Postman для курса:
     - POST: http://localhost:8000/course/create/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: name, description);
