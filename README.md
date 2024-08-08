@@ -75,14 +75,22 @@
     - DELETE: http://localhost:8000/course/delete/<pk курса>.
    
     Запросы в Postman для урока:
-    - POST: `http://localhost:8000/lesson/create/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: name, description, course);
-    - GET (получить список уроков): http://localhost:8000/lesson/;
-    - GET (получить конкретный урок): http://localhost:8000/lesson/retrieve/<pk урока>/;
-    - PATCH: http://localhost:8000/lesson/update/<pk урока>;
-    - DELETE: http://localhost:8000/lesson/delete/<pk урока>.
-8. Регистрация нового пользователя: 
+    - POST: создание урока: `http://localhost:8000/lesson/create/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: name, description, course);
+    - GET: получить список уроков: http://localhost:8000/lesson/;
+    - GET: получить конкретный урок: http://localhost:8000/lesson/retrieve/<pk урока>/;
+    - PUT: обновление урока: http://localhost:8000/lesson/update/<pk урока>;
+    - DELETE: удаление урока: http://localhost:8000/lesson/delete/<pk урока>.
+
+    Запросы в Postman для подписки на образовательный модуль и курс:
+    - POST: создание подписки: http://localhost:8000/subscription/create (заполнить тело, выбрав параметры 'raw' и 'json', поля: subscription_type, module, course);
+    - GET: получение списка подписок: http://localhost:8000/subscription/;
+    - GET получить конкретную подписку: http://localhost:8000/subscription/retrieve/<pk подписки>;
+    - PUT: обновление подписки: http://localhost:8000/subscription/update/<pk подписки>;
+    - DELETE: удаление подписки: http://localhost:8000/subscription/delete/<pk подписки>.
+   
+9. Регистрация нового пользователя: 
    - POST: http://localhost:8000/users/user/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: email, password).
-9. После регистрации пользователя нужно войти в приложение с помощью логина и пароля сделав соответствующий запрос:
+10. После регистрации пользователя нужно войти в приложение с помощью логина и пароля сделав соответствующий запрос:
    - POST: http://localhost:8000/users/login/
 
 ## Документация API
