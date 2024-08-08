@@ -61,23 +61,23 @@
 7. Виды запросов в Postman: 
 
    Запросы в Postman для образовательного модуля:
-    - POST: http://localhost:8000/modules/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: name, description);
-    - GET: (получить список модулей): http://localhost:8000/modules/;
-    - GET: (получить конкретный модуль): http://localhost:8000/modules/<pk модуля>/;
-    - PUT: http://localhost:8000/modules/<pk модуля>/ (заполнить тело, выбрав параметры 'raw' и 'json');
-    - DELETE: http://localhost:8000/modules/<pk модуля>/.
+    - POST: создание модуля: http://localhost:8000/modules/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: title, description);
+    - GET: получение списка модулей: http://localhost:8000/modules/;
+    - GET: получение конкретного модуля: http://localhost:8000/modules/<pk модуля>/;
+    - PUT: изменение модуля: http://localhost:8000/modules/<pk модуля>/ (заполнить тело, выбрав параметры 'raw' и 'json');
+    - DELETE: удаление модуля: http://localhost:8000/modules/<pk модуля>/.
    
    Запросы в Postman для курса:
-    - POST: http://localhost:8000/course/create/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: name, description);
-    - GET: (получить список курсов): http://localhost:8000/course/;
-    - GET: (получить конкретный курс): http://localhost:8000/course/retrieve/<pk курса>/;
-    - PUT: http://localhost:8000/course/update/<pk курса> (заполнить тело, выбрав параметры 'raw' и 'json');
-    - DELETE: http://localhost:8000/course/delete/<pk курса>.
+    - POST: создание курса: http://localhost:8000/course/create/ (заполнить тело, выбрав параметры 'raw' и 'json'; поля: title, description, module);
+    - GET: получение списка курсов: http://localhost:8000/course/;
+    - GET: получение конкретного курса: http://localhost:8000/course/retrieve/<pk курса>/;
+    - PUT: изменение курса: http://localhost:8000/course/update/<pk курса> (заполнить тело, выбрав параметры 'raw' и 'json');
+    - DELETE: удаление курса: http://localhost:8000/course/delete/<pk курса>.
    
     Запросы в Postman для урока:
-    - POST: создание урока: `http://localhost:8000/lesson/create/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: name, description, course);
-    - GET: получить список уроков: http://localhost:8000/lesson/;
-    - GET: получить конкретный урок: http://localhost:8000/lesson/retrieve/<pk урока>/;
+    - POST: создание урока: `http://localhost:8000/lesson/create/ (заполнить тело, выбрав параметры 'raw' и 'json', поля: title, description, course);
+    - GET: получение списка уроков: http://localhost:8000/lesson/;
+    - GET: получение конкретного урока: http://localhost:8000/lesson/retrieve/<pk урока>/;
     - PUT: обновление урока: http://localhost:8000/lesson/update/<pk урока>;
     - DELETE: удаление урока: http://localhost:8000/lesson/delete/<pk урока>.
 
