@@ -132,9 +132,4 @@ class Subscription(models.Model):
         verbose_name_plural = "Подписки"
 
     def __str__(self):
-        if self.subscription_type == "module":
-            return f"{self.subscriber} подписан на модуль {self.module}"
-        elif self.subscription_type == "course":
-            return f"{self.subscriber} подписан на курс {self.course}"
-        else:
-            return f"{self.subscriber} имеет подписку неизвестного типа"
+        return f"{self.subscriber}"
